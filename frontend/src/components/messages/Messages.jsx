@@ -3,9 +3,11 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages";
 import Message from "./message";
 import MessageSkeleton from "../skeletons/MessageSkeleton";
+import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
+  useListenMessages();// an event to listen every new msg (SOCKET)
   const lastMessageRef = useRef();
   useEffect(() => {
     setTimeout(() => {

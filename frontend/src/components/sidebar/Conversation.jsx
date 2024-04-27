@@ -1,13 +1,15 @@
 // import { useSocketContext } from "../../context/SocketContext";
 import useConversation from "../../zustand/useConversation";
 import toast from "react-hot-toast";
+import { useSocketContext } from "../../context/SocketContext";
 
 const Conversation = ({ conversation, lastIdx, emoji }) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   const isSelected = selectedConversation?._id === conversation._id;
-  // const { onlineUsers } = useSocketContext();
-  // const isOnline = onlineUsers.includes(conversation._id);
+  const { onlineUsers } = useSocketContext();
+  console.log("Online Users:", onlineUsers); // Debug log to check onlineUsers
+  const isOnline = onlineUsers.includes(conversation._id);//current user is online or not
 
   return (
     <>
@@ -16,7 +18,7 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
 				${isSelected ? "bg-neutral" : ""}`}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className={`avatar online`}>
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={conversation.profilepic} alt="user avatar" />
           </div>

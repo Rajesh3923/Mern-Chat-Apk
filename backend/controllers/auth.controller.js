@@ -1,7 +1,7 @@
 import User from "../models/user.model.js";
 import generateToken from "../utils/generateToken.js";
 export const signup = async (req, res) => {
-  console.log("signup called");
+  // console.log("signup called");
   try {
     const { fullname, username, password, confirmpassword, gender } = req.body;
     if (password !== confirmpassword) {

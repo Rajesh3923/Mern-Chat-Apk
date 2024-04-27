@@ -14,7 +14,7 @@ const protectRoute = async (req, res, next) => {
         message: "You are not authorized,token verification failed...",
       });
     }
-    console.log("User ID:", decoded.userId);
+    // console.log("User ID:", decoded.userId);
     const user = await User.findOne({_id:decoded.userId}).select("-password");//removing the pwd feild
     if (!user) {
       return res.status(401).json({ message: "User not found" });
