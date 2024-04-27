@@ -9,7 +9,6 @@ export const useSocketContext = () => {
   // It uses the useContext hook from React to access the current context value provided by the nearest "SocketContext.Provider" component in the component tree.
 };
 
-
 // below is for wrapping the APP in maim.jsx with SocketContextProvider
 export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
@@ -18,7 +17,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:5000", {
+      const socket = io("https://hookup-vqek.onrender.com", {
         query: {
           userId: authUser._id,
         },
@@ -27,7 +26,8 @@ export const SocketContextProvider = ({ children }) => {
       setSocket(socket);
 
       // socket.on() is used to listen to the events. can be used both on client and server side
-      socket.on("getOnlineUsers", (users) => {// calling getOnlineUsers event on server side will return all the online users
+      socket.on("getOnlineUsers", (users) => {
+        // calling getOnlineUsers event on server side will return all the online users
         setOnlineUsers(users);
       });
 
