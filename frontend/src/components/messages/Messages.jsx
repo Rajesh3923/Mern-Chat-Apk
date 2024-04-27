@@ -7,7 +7,7 @@ import useListenMessages from "../../hooks/useListenMessages";
 
 const Messages = () => {
   const { messages, loading } = useGetMessages();
-  useListenMessages();// an event to listen every new msg (SOCKET)
+  useListenMessages();// an event to listen every new msg (SOCKET) and immediately updates
   const lastMessageRef = useRef();
   useEffect(() => {
     setTimeout(() => {

@@ -3,23 +3,25 @@
 @tailwind utilities;
 
 body {
-  /* background: url("./assets/hero.png"); */
-  /* background-repeat: no-repeat; */
+  /* background-color: #000;  */
+  background-color: #222831;
+  
 }
+
 /* dark mode looking scrollbar */
 ::-webkit-scrollbar {
-	width: 8px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-track {
-	background: #555;
+  background: #555;
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #121212;
-	border-radius: 5px;
+  background: #121212;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #242424;
+  background: #242424;
 }

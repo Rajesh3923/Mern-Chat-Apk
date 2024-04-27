@@ -15,7 +15,7 @@ const Conversation = ({ conversation, lastIdx, emoji }) => {
     <>
       <div
         className={`flex gap-2 items-center hover:bg-neutral rounded p-2 py-1 cursor-pointer
-				${isSelected ? "bg-neutral" : ""}`}
+${isSelected ? "bg-neutral" : ""}`}
         onClick={() => setSelectedConversation(conversation)}
       >
         <div className={`avatar ${isOnline ? "online" : ""}`}>

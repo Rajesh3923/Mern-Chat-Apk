@@ -10,8 +10,9 @@ const useListenMessages = () => {
   const { messages, setMessages } = useConversation();
 
   useEffect(() => {
+    // this runs when dependency items change
     socket?.on("newMessage", (newMessage) => {
-    //   newMessage.shouldShake = true;
+      //   newMessage.shouldShake = true;
       const sound = new Audio(notificationSound);
       sound.play();
       setMessages([...messages, newMessage]);
@@ -19,5 +20,7 @@ const useListenMessages = () => {
 
     return () => socket?.off("newMessage");
   }, [socket, setMessages, messages]);
+  //Inside the useEffect hook, which runs when socket, setMessages, or messages change,
+  // the logic for listening to new messages and updating the message state is implemented.
 };
 export default useListenMessages;

@@ -40,7 +40,7 @@ const useSignup = () => {
       console.log(data);
       if (response.ok) {
         // Account created successfully
-        toast.success("Account Created Successfully");
+        toast.success(`Welcome, ${data.fullname}!`);
       } else {
         // Handle other response statuses if needed
         toast.error(data.message || "Failed to create account");
