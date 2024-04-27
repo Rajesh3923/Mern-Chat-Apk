@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import dotenv from "dotenv"; // Import dotenv module
 
@@ -9,6 +10,7 @@ import {app, server} from "./socket/socket.js";
 import connectToMongoDB from "./db/connectToMongoDB.js"; // importing connection to MongoDB
 
 dotenv.config(); // Load environment variables from .env file
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000; // Use the port from environment variables or default to 5000
 import cookieParser from "cookie-parser";
@@ -25,6 +27,14 @@ app.use(cookieParser()); // before accesing below routes ,it verifies the user l
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
+
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));//for serving the static files from the frontend/dist folder 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
+
+
 
 server.listen(PORT, () => {
   connectToMongoDB();
