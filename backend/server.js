@@ -12,7 +12,7 @@ import connectToMongoDB from "./db/connectToMongoDB.js"; // importing connection
 dotenv.config(); // Load environment variables from .env file
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 5000; // Use the port from environment variables or default to 5000
+const PORT = process.env.PORT || 0.0.0.0; // Use the port from environment variables or default to 5000
 import cookieParser from "cookie-parser";
 
 // Rest of your code remains the same
